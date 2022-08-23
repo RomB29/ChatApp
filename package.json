@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "express": "^4.17.1",
+    "mariadb": "^3.0.1",
+    "mysql2": "^2.2.5",
+    "package.json": "^2.0.1",
+    "socket.io": "^4.0.1"
+  }
+}
