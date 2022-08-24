@@ -1,7 +1,23 @@
-const mariadb = require('mariadb');
+const mariadb = require('mariadb/callback');
 
-let db = null;
+const db = mariadb.createConnection({
+  user: "Romain",
+  host: "localhost",
+  password: "N3v3rFromConc3ntrat3",
+  database: "chat",
+});
+db.connect(err => {
+  if (err) {
+    console.log("not connected due to error: " + err);
+  } else {
+    console.log("connected ! connection id is " + db.threadId);
+  }
+});
+console.log(db);
+
 class DB {
+
+  
   constructor() {
     // db = mariadb.createPool({
     //   user: "root",
@@ -10,12 +26,7 @@ class DB {
     //   connectTimeout: 20000,
     //   database: "chat",
     // });
-    db = mariadb.createConnection({
-      user: "root",
-      host: "localhost",
-      password: "root",
-      database: "chat",
-    });
+    
     // db.getConnection(function (err) {
     //   if (err) console.log(err);
     // });
@@ -26,9 +37,9 @@ class DB {
       if (await this.isUserExist(data)) {
         resolve(true);
       } else
-        db.query(
+      db.query(
           "INSERT INTO chat.users (name, user_id) VALUES (?,?)",
-          [data.name, data.user_id],
+          [data.name, 1],
           function (err, rows) {
             if (err) reject(new Error(err));
             else resolve(rows);
@@ -65,7 +76,7 @@ class DB {
     return new Promise((resolve, reject) => {
       db.query(
         "INSERT INTO messages (message, user_id, name) VALUES (?,?,?)",
-        [data.message, data.user_id, data.name],
+        [data.message, 1, data.name],
         function (err, rows) {
           if (err) reject(new Error(err));
           else resolve(rows);
