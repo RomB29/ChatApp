@@ -17,7 +17,7 @@ console.log(db);
 
 class DB {
 
-  
+
   constructor() {
     // db = mariadb.createPool({
     //   user: "root",
@@ -26,7 +26,7 @@ class DB {
     //   connectTimeout: 20000,
     //   database: "chat",
     // });
-    
+
     // db.getConnection(function (err) {
     //   if (err) console.log(err);
     // });
@@ -39,7 +39,7 @@ class DB {
       } else
       db.query(
           "INSERT INTO chat.users (name, user_id) VALUES (?,?)",
-          [data.name, 1],
+          [data.name, data.user_id],
           function (err, rows) {
             if (err) reject(new Error(err));
             else resolve(rows);

@@ -17,8 +17,8 @@ io.on("connection", function (socket) {
   });
 
   // More Socket listening here.
-  if (io.sockets.connected)
-    socket.emit("connections", Object.keys(io.sockets.connected).length);
+  if (io.sockets)
+    socket.emit("connections", io.sockets.sockets.size);
   else socket.emit("connections", 0);
 
   socket.on("chat-message", async (message) => {

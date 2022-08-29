@@ -154,17 +154,19 @@
           });
 
           function send() {
-            messages.push({
-              message: newMessage.value,
-              type: 0,
-              user: "Me",
-            });
+            if (newMessage.value != null) {
+              messages.push({
+                message: newMessage.value,
+                type: 0,
+                user: "Me",
+              });
 
-            socket.emit("chat-message", {
-              message: newMessage.value,
-              user: username.value,
-            });
-            newMessage.value = null;
+              socket.emit("chat-message", {
+                message: newMessage.value,
+                user: username.value,
+              });
+              newMessage.value = null;
+            }
           }
 
           function addUser() {
