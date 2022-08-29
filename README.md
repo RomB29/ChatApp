@@ -17,6 +17,11 @@ This project is a chat which require backend + frontend working in real time.
  - mariadB
  - socket.io
 
+## Sockets blocked ?
+Windows users: 
+![Alt text](/kill_sockets_incase.png "Killing noted")
+
+
 ## Related
 
 The goal of this project is to be able to handle data in real time on database, and then, it will be implementend in the real application (which will come one day)
