@@ -6,7 +6,7 @@ const DataBase = require("./database.js");
 const db = new DataBase();
 
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/index.html");
+  res.sendFile("D:/Programmation/chat_vue3_socket_nodejs/Frontend/index.html");
 });
 io.on("connection", function (socket) {
 
